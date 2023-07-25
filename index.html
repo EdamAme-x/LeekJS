@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeekJS</title>
+    <link rel="shortcut icon" href="./static/leek.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <script src="./@engine/leek.js"></script>
+    <script>
+        const L = new Leek(document.getElementById('app')); // 最後
+        let a = "aaa!"
+
+        function reloadDate() {
+            header = L.html`
+            ${a} ${testCmp}
+            <header>
+                headerですわ! ${Date.now()}
+                <button onclick="${L.event('alert(event);reloadDate()')}">alert</button>
+            </header>
+        `
+
+            L.render(`${header}`)
+        }
+
+        let testCmp = L.html`
+            <p>test</p>
+        `
+
+        let header = L.html`
+            ${a} ${testCmp}
+            <header>
+                headerですわ! ${Date.now()}
+                <button onclick="${L.event('alert(event);reloadDate()')}">alert</button>
+            </header>
+        `
+
+        L.render(`${header}`)
+    </script>
+</body>
+
+</html>
